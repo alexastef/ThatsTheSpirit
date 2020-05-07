@@ -1,0 +1,59 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+
+header {
+    background-color: slategray;
+    text-align: center;
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+body {
+    background-image: url(barphoto.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+.row {
+    text-align: center;
+}
+
+.options {
+    text-align: center;
+}
+
+#dropdownMenu1 {
+    width: 100%;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    /* position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+}
+
+.dropdown-menu {
+    margin-top: 0;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.btn {
+    height: 100%;
+    width: 100%;
+}
+/* #ingredient,
+#category,
+#random::hover {
+    background-color: black;
+} */
