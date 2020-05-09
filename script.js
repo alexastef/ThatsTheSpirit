@@ -35,21 +35,33 @@ $(document).ready(function(){
     })
     $(".stepTwo-container").on("click", ".liquor-btn", function(){
         console.log($(this).val());
-
+    })
         // var searchTerm = $(this).val()
         // if (searchTerm == Tequila) {}
+        // randomBtn.on("click", function(){
+    randomBtn.on("click", function(){
+        //also hide the dropdown button
+        $(".dropdown").attr("style", "display:none");
+        var randomDrinks = ["Clover Club", "City Slicker", "Brandy Alexander", "Affair", "Mimosa", "Shanghai Cocktail"," Scotch Cobbler", "Run Milk Punch", "Army Special", "Hot Chocolate to Die for"];
+        // // for (var i=0; i<randomDrinks.length; i++){
+    
+        var selectedRandomDrink = Math.floor(Math.random()*10)+1;
+        console.log(selectedRandomDrink);
+        var youSelected = "Here is your drink " + randomDrinks[selectedRandomDrink];
+        console.log(youSelected);
 
+        $.ajax({
+            type: "GET",
+            url: "https://www.thecocktaildb.com/api/json/v1/1/random.php"
+        })
+        
+        // }
     })
-
     // categoryBtn.on("click", function(){
     //     // Hide dropdown
     //     // Populate new item that looks like original button
     //         // Underneath populate box buttons each with a different category
     //         // Show input with selection box for music 
-    // })
-
-    // randomBtn.on("click", function(){
-    //     // populate 
     // })
 
 })
