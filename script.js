@@ -53,7 +53,7 @@ $(document).ready(function(){
         $.ajax({
             type: "GET",
             url: "https://www.thecocktaildb.com/api/json/v1/1/random.php"
-        })
+        });
         
         // }
     })
