@@ -31,6 +31,20 @@ $(document).ready(function(){
         // Populate new item - card? - that looks like the original button
             // Underneath populate box buttons each with a different liquor choice 
             // tequila, vodka, gin, whiskey, rum 
+<<<<<<< HEAD
+    });
+
+    categoryBtn.on("click", function(){
+        // Hide dropdown
+        // Populate new item that looks like original button
+            // Underneath populate box buttons each with a different category
+            // Show input with selection box for music 
+    });
+
+    randomBtn.on("click", function(){
+        // populate 
+    });
+=======
         
     })
     $(".stepTwo-container").on("click", ".liquor-btn", function(){
@@ -40,6 +54,7 @@ $(document).ready(function(){
         // if (searchTerm == Tequila) {}
 
     })
+>>>>>>> be6e31b6b4c6daf03c5b428cff733ea54925e5a9
 
     // categoryBtn.on("click", function(){
     //     // Hide dropdown
