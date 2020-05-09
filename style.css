@@ -59,6 +59,20 @@ body {
     background-color: gray;
     width: 100%;
 }
+
+.row {
+    width: 100%;
+}
+
+/* .drink-container {
+    position: relative;
+} */
+
+/* .drinkImg {
+    position: absolute;
+
+} */
+
 /* #ingredient,
 #category,
 #random::hover {
