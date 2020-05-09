@@ -23,7 +23,7 @@ $(document).ready(function(){
             $(".stepTwo-container").append(liquorBtn);
         }
 
-
+        
         // var userChoice = event.target;
         // console.log(userChoice);
 
