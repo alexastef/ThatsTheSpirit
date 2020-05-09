@@ -16,17 +16,17 @@ $(document).ready(function(){
         // Populate new item - card? - that looks like the original button
             // Underneath populate box buttons each with a different liquor choice 
             // tequila, vodka, gin, whiskey, rum 
-    })
+    });
 
     categoryBtn.on("click", function(){
         // Hide dropdown
         // Populate new item that looks like original button
             // Underneath populate box buttons each with a different category
             // Show input with selection box for music 
-    })
+    });
 
     randomBtn.on("click", function(){
         // populate 
-    })
+    });
 
 })
