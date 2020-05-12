@@ -12,6 +12,7 @@ header {
     color: white;
     padding-top: 5px;
     padding-bottom: 5px;
+    font-family: cursive;
 }
 
 body {
@@ -46,6 +47,7 @@ body {
     width: 100%;
     margin: 0 auto;
     text-align: center;
+
 }
 
 .btn {
@@ -57,6 +59,20 @@ body {
     background-color: gray;
     width: 100%;
 }
+
+.row {
+    width: 100%;
+}
+
+/* .drink-container {
+    position: relative;
+} */
+
+/* .drinkImg {
+    position: absolute;
+
+} */
+
 /* #ingredient,
 #category,
 #random::hover {
