@@ -57,11 +57,11 @@ $(document).ready(function(){
             $(".row-1").attr("style", "display: block");
             $(".row-2").attr("style", "display: block");
             $(".stepTwo-container").attr("style", "display: none");
-            $(".drink-container").append("<h3>" + randomSelection.strDrink + "</h3>" );
+            $(".your-drink").append(randomSelection.strDrink);
 
             var img = $("<img src='" + randomSelection.strDrinkThumb + "' class='drinkImg img-fluid clearfix' />");
             console.log(randomSelection.strDrinkThumb);
-            $(".drink-container").append(img);
+            $(".drink-image").append(img);
 
             var displayCocktail = randomSelection.idDrink;
 
@@ -74,15 +74,53 @@ $(document).ready(function(){
     function getRecipe(x) {
         var recipeUrl = baseUrl + "lookup.php?i=" + x;
         console.log(recipeUrl);
+        var options = {
+            "async": true,
+            "crossDomain": true,
+            "url": recipeUrl,
+            "method": "GET",
+        }
         
-        $.ajax({
-            queryUrl: recipeUrl,
-            method: "GET",
-            data: jsonData,
-            dataType: "json"
-            // crossDomain: true,
-        }).then(function(response){
+        $.ajax(options).then(function(response){
             console.log(response);
+            var drinkRecipe = response.drinks[0];
+
+            var allIngredients = [
+                {ingredient: drinkRecipe.strIngredient1, measure: drinkRecipe.strMeasure1},
+                {ingredient: drinkRecipe.strIngredient2, measure: drinkRecipe.strMeasure2},
+                {ingredient: drinkRecipe.strIngredient3, measure: drinkRecipe.strMeasure3},
+                {ingredient: drinkRecipe.strIngredient4, measure: drinkRecipe.strIngredient5}, 
+                {ingredient: drinkRecipe.strIngredient6, measure: drink
+                drinkRecipe.strIngredient7, drinkRecipe.strIngredient8, drinkRecipe.strIngredient9,
+                drinkRecipe.strIngredient10, drinkRecipe.strIngredient11, drinkRecipe.strIngredient12,
+                drinkRecipe.strIngredient13, drinkRecipe.strIngredient14, drinkRecipe.strIngredient15
+            ];
+
+            // var allMeasures = [
+            //     drinkRecipe.strMeasure1, drinkRecipe.strMeasure2, drinkRecipe.strMeasure3,
+            //     drinkRecipe.strMeasure4, drinkRecipe.strMeasure5, drinkRecipe.strMeasure6,
+            //     drinkRecipe.strMeasure7, drinkRecipe.strMeasure8, drinkRecipe.strMeasure9,
+            //     drinkRecipe.strMeasure10, drinkRecipe.strMeasure11, drinkRecipe.strMeasure12,
+            //     drinkRecipe.strMeasure13, drinkRecipe.strMeasure14, drinkRecipe.strMeasure15
+            // ];
+
+            $(".glass-type").append(drinkRecipe.strGlass);
+
+            for (var i=0; i < allIngredients.length; i++) {
+                if (allIngredients[i] == null) {
+                    return;
+                } else {
+                    for (var i=0; i < allMeasures.length; i++) {
+                        // if (allMeasures[i] !== null) {
+                            $(".ingredient-list").append("<li>" + allMeasures[i] + allIngredients[i] + "</li>" )   
+                        // }
+                    }
+                }
+            }
+            // $(".ingredient-list").append("<li>" + drinkRecipe.strIngredient1 + "," + drinkRecipe.strMeasure1 + "</li>");
+            // $(".ingredient-list").append("<li>" + drinkRecipe.strIngredient2 + "," + drinkRecipe.strMeasure2 + "</li>");
+
+            $(".instructions").append(drinkRecipe.strInstructions);
         })
         
     }
