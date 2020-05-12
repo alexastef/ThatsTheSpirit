@@ -64,17 +64,15 @@ body {
     width: 100%;
 }
 
-/* .drink-container {
-    position: relative;
-} */
+.withBackground {
+    color: white;
+}
 
-/* .drinkImg {
-    position: absolute;
+.ingredient {
+    list-style: none;
+    color: white;
+}
 
-} */
-
-/* #ingredient,
-#category,
-#random::hover {
-    background-color: black;
-} */
+ul {
+    padding: 0px;
+}
