@@ -39,7 +39,23 @@
     </div>
     <div class="col-sm-7 withBackground rounded">
         <div class="drink-container withBackground rounded">
-            <!-- Dynamically created H3 will go here with drink name-->
+            <!-- Dynamic H3 -->
+            <h3 class="your-drink"></h3>
+            <!-- Dynamic Image -->
+            <div class="drink-image"></div>
+
+            <!-- Glass Type -->
+            <h6>Glass Type</h6>
+            <p class="glass-type"></p>
+
+            <!-- Ingredients List -->
+            <h6>Ingredients</h6>
+            <ul class="ingredient-list"></ul>
+
+            <!-- Instructions Ordered List -->
+            <h6>Instructions</h6>
+            <p class="instructions"></p>
+
         </div>
     </div>
  </div>
@@ -61,9 +77,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/120c3490b3.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- <script src="script.js"></script> -->
-    <script>
-    function getRecipe() {
+    <script src="script.js"></script>
+  
+    <!-- function getRecipe() {
         var recipeUrl = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=16273";
         console.log(recipeUrl);
         
@@ -78,7 +94,7 @@
         })
         
     }
-    getRecipe();
-</script>
+    getRecipe(); -->
+
 </body>
 </html>
