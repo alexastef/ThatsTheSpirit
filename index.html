@@ -25,8 +25,50 @@
             </ul>
         </div>
         <div class="stepTwo-container"></div>
+
+</div>
+ </div>
+ <div class="row row-1" style="display:none">
+    <div class="col-sm-12 withBackground rounded">
+        <h3> Enjoy!</h3>
+    </div>   
+</div>         
+ <div class="row row-2" style="display:none">
+    <div class="col-sm-5 withBackground rounded">
+        <div class="spotify-container"></div>
     </div>
- </div>   
+    <div class="col-sm-7 withBackground rounded">
+        <div class="drink-container withBackground rounded">
+            <!-- Dynamic H3 -->
+            <h3 class="your-drink"></h3>
+            <!-- Dynamic Image -->
+            <div class="drink-image"></div>
+
+            <!-- Glass Type -->
+            <h6>Glass Type</h6>
+            <p class="glass-type"></p>
+
+            <!-- Ingredients List -->
+            <h6>Ingredients</h6>
+            <ul class="ingredient-list"></ul>
+
+            <!-- Instructions Ordered List -->
+            <h6>Instructions</h6>
+            <p class="instructions"></p>
+
+        </div>
+    </div>
+ </div>
+        
+ <div class="row row-3">
+    <div class="col-sm-12 withBackground rounded" style="display: none">
+        <div class="moreDrinks-container">
+            <h3>More Drinks You Might Like</h3>
+        </div>
+    </div>
+ </div>
+<!-- </div> -->
+   
 
 
 </div>
@@ -34,6 +76,25 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/120c3490b3.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="script.js"></script>
+  
+    <!-- function getRecipe() {
+        var recipeUrl = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=16273";
+        console.log(recipeUrl);
+        
+        $.ajax({
+            queryUrl: recipeUrl,
+            method: "GET",
+            // data: jsonData,
+            dataType: "json",
+            // crossDomain: true,
+        }).then(function(response){
+            console.log(response);
+        })
+        
+    }
+    getRecipe(); -->
+
 </body>
 </html>
