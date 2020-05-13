@@ -160,6 +160,28 @@ $(document).ready(function(){
                 drinkImg = getRandomDrink.drinks[0].strDrinkThumb;
                 console.log(drinkImg);
                 $(".img").attr("src", drinkImg);
+
+                glassType = getRandomDrink.drinks[0].strGlass;
+                console.log(glassType);
+                $("p.glass-type").append(glassType);
+    
+                //for the in ingredient list
+                for (var i = 1; i <16; i++){
+                    console.log(i);
+    
+    
+                    if (getRandomDrink.drinks[0]["strIngredient"+[i]] === null){
+                        break;
+                    }
+                    var ingredient = document.createElement("ingredient-from-the-online-list");
+                    ingredient.innerHTML = getRandomDrink.drinks[0]["strMeasure"+[i]] + ": " + getRandomDrink.drinks[0]["strIngredient"+[i]]+"<br/>";
+                    console.log(ingredient);
+                    $("ul.ingredient-list").append(ingredient);
+                }
+                
+                var someInstruction = document.createElement("some-online-instruction");
+                someInstruction.innerHTML = getRandomDrink.drinks[0].strInstructions;
+                $("p.instructions").append(someInstruction);    
                 
 
             }
