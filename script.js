@@ -90,7 +90,7 @@ $(document).ready(function () {
       for (var i = 0; i < allIngredients.length; i++) {
         console.log(allIngredients[i]);
         if (allIngredients[i].ingredient !== null && allIngredients[i].measure !== null) {
-          $(".ingredient-list").append("<li class='ingredient'>" + allIngredients[i].measure + allIngredients[i].ingredient + "</li>");
+          $(".ingredient-list").append("<li class='ingredient'>" + allIngredients[i].measure + " " + allIngredients[i].ingredient + "</li>");
         }
         else if (allIngredients[i].ingredient !== null && allIngredients[i].measure == null) {
           $(".ingredient-list").append("<li class='ingredient'>" + allIngredients[i].ingredient + "</li>");
@@ -101,14 +101,28 @@ $(document).ready(function () {
     });
   }
 
-  // categoryBtn.on("click", function(){
-  //     // Hide dropdown
-  //     // Populate new item that looks like original button
-  //         // Underneath populate box buttons each with a different category
-  //         // Show input with selection box for music
-  // })
+    randomBtn.on("click", function(){
+        $(".dropdown").attr("style","display:none");
+        var url = "https://www.thecocktaildb.com/api/json/v1/1/random.php"
 
-  // randomBtn.on("click", function(){
-  //     // populate
-  // })
+        $.ajax({
+            url: url,
+            method:"GET",
+            success: function(getRandomDrink){
+                console.log(getRandomDrink.drinks[0].strDrink);
+
+                drinkName = getRandomDrink.drinks[0].strDrink;
+                $(".your-drink").append(drinkName);
+                $(".row-2").attr("style","display:block");
+
+                drinkImg = getRandomDrink.drinks[0].strDrinkThumb;
+                console.log(drinkImg);
+                $(".img").attr("src", drinkImg);
+                
+
+            }
+        })
+    })
+
 });
+
