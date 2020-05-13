@@ -3,6 +3,7 @@ $(document).ready(function () {
   var categoryBtn = $("#category");
   var randomBtn = $("#random");
   var baseUrl = "https://www.thecocktaildb.com/api/json/v1/1/";
+  var filter= "";
 
   // Adding event listener to the ingredient initial ingredient button
   ingredientBtn.on("click", function () {
@@ -17,12 +18,42 @@ $(document).ready(function () {
           liquorChoices[i] + "'>" + liquorChoices[i] + "</button>");
       $(".stepTwo-container").append(liquorBtn);
     }
+    filter = "filter.php?i=";
+    return filter;
 
+  });
+
+  categoryBtn.on("click", function () {
+    // Hide original dropdown menu
+    $(".dropdown").attr("style", "display: none");
+    var chooseCategory = $("<button class='btn btn-default' type='button' id='refBtn'> Choose your category: </button>");
+    $(".stepTwo-container").append(chooseCategory);
+
+    var categoryChoices = ["Glass", "Complexity", "Flavor"];
+    for (var i = 0; i < categoryChoices.length; i++) {
+      var catBtn = $("<button id='" + categoryChoices[i] + "' class='btn btn-default category-btn' type='button' value='" + categoryChoices[i] + "'>" + categoryChoices[i] + "</button>");
+      $(".stepTwo-container").append(catBtn);
+    }
+  });
+
+  $(".stepTwo-container").on("click", "#Glass", function () {
+    // Empty .stepTwo-container div, making it ready for new buttons
+    $(".stepTwo-container").empty();
+    var chooseGlass = $("<button class='btn btn-default' type='button' id='refBtnTwo'> Choose your glass: </button>");
+    $(".stepTwo-container").append(chooseGlass);
+
+    var glassChoices = ["Cocktail glass", "Shot glass", "Pint glass", "Beer mug", "Margarita glass", "Martini Glass"];
+    for (var i = 0; i < glassChoices.length; i++) {
+      var glassBtn = $("<button class='btn btn-default liquor-btn' type='button' value='" + glassChoices[i] + "'>" + glassChoices[i] + "</button>");
+      $(".stepTwo-container").append(glassBtn);
+    }
+    filter = "filter.php?g=";
+    return filter;
   });
 
   $(".stepTwo-container").on("click", ".liquor-btn", function () {
     var userChoice = $(this).val();
-    var queryUrl = baseUrl + "filter.php?i=" + userChoice;
+    var queryUrl = baseUrl + filter + userChoice;
 
     $.ajax({
       url: queryUrl,
