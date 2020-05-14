@@ -3,6 +3,7 @@ $(document).ready(function () {
   var categoryBtn = $("#category");
   var randomBtn = $("#random");
   var baseUrl = "https://www.thecocktaildb.com/api/json/v1/1/";
+  var filter= "";
 
   // Adding event listener to the ingredient initial ingredient button
   ingredientBtn.on("click", function () {
@@ -17,12 +18,42 @@ $(document).ready(function () {
           liquorChoices[i] + "'>" + liquorChoices[i] + "</button>");
       $(".stepTwo-container").append(liquorBtn);
     }
+    filter = "filter.php?i=";
+    return filter;
 
+  });
+
+  categoryBtn.on("click", function () {
+    // Hide original dropdown menu
+    $(".dropdown").attr("style", "display: none");
+    var chooseCategory = $("<button class='btn btn-default' type='button' id='refBtn'> Choose your category: </button>");
+    $(".stepTwo-container").append(chooseCategory);
+
+    var categoryChoices = ["Glass", "Complexity", "Flavor"];
+    for (var i = 0; i < categoryChoices.length; i++) {
+      var catBtn = $("<button id='" + categoryChoices[i] + "' class='btn btn-default category-btn' type='button' value='" + categoryChoices[i] + "'>" + categoryChoices[i] + "</button>");
+      $(".stepTwo-container").append(catBtn);
+    }
+  });
+
+  $(".stepTwo-container").on("click", "#Glass", function () {
+    // Empty .stepTwo-container div, making it ready for new buttons
+    $(".stepTwo-container").empty();
+    var chooseGlass = $("<button class='btn btn-default' type='button' id='refBtnTwo'> Choose your glass: </button>");
+    $(".stepTwo-container").append(chooseGlass);
+
+    var glassChoices = ["Cocktail glass", "Shot glass", "Pint glass", "Beer mug", "Margarita glass", "Martini Glass"];
+    for (var i = 0; i < glassChoices.length; i++) {
+      var glassBtn = $("<button class='btn btn-default liquor-btn' type='button' value='" + glassChoices[i] + "'>" + glassChoices[i] + "</button>");
+      $(".stepTwo-container").append(glassBtn);
+    }
+    filter = "filter.php?g=";
+    return filter;
   });
 
   $(".stepTwo-container").on("click", ".liquor-btn", function () {
     var userChoice = $(this).val();
-    var queryUrl = baseUrl + "filter.php?i=" + userChoice;
+    var queryUrl = baseUrl + filter + userChoice;
 
     $.ajax({
       url: queryUrl,
@@ -90,7 +121,7 @@ $(document).ready(function () {
       for (var i = 0; i < allIngredients.length; i++) {
         console.log(allIngredients[i]);
         if (allIngredients[i].ingredient !== null && allIngredients[i].measure !== null) {
-          $(".ingredient-list").append("<li class='ingredient'>" + allIngredients[i].measure + allIngredients[i].ingredient + "</li>");
+          $(".ingredient-list").append("<li class='ingredient'>" + allIngredients[i].measure + " " + allIngredients[i].ingredient + "</li>");
         }
         else if (allIngredients[i].ingredient !== null && allIngredients[i].measure == null) {
           $(".ingredient-list").append("<li class='ingredient'>" + allIngredients[i].ingredient + "</li>");
@@ -101,14 +132,50 @@ $(document).ready(function () {
     });
   }
 
-  // categoryBtn.on("click", function(){
-  //     // Hide dropdown
-  //     // Populate new item that looks like original button
-  //         // Underneath populate box buttons each with a different category
-  //         // Show input with selection box for music
-  // })
+    randomBtn.on("click", function(){
+        $(".dropdown").attr("style","display:none");
+        var url = "https://www.thecocktaildb.com/api/json/v1/1/random.php"
 
-  // randomBtn.on("click", function(){
-  //     // populate
-  // })
+        $.ajax({
+            url: url,
+            method:"GET",
+            success: function(getRandomDrink){
+                console.log(getRandomDrink.drinks[0].strDrink);
+
+                drinkName = getRandomDrink.drinks[0].strDrink;
+                $(".your-drink").append(drinkName);
+                $(".row-2").attr("style","display:block");
+
+                drinkImg = getRandomDrink.drinks[0].strDrinkThumb;
+                console.log(drinkImg);
+                $(".img").attr("src", drinkImg);
+
+                glassType = getRandomDrink.drinks[0].strGlass;
+                console.log(glassType);
+                $("p.glass-type").append(glassType);
+    
+                //for the in ingredient list
+                for (var i = 1; i <16; i++){
+                    console.log(i);
+    
+    
+                    if (getRandomDrink.drinks[0]["strIngredient"+[i]] === null){
+                        break;
+                    }
+                    var ingredient = document.createElement("ingredient-from-the-online-list");
+                    ingredient.innerHTML = getRandomDrink.drinks[0]["strMeasure"+[i]] + ": " + getRandomDrink.drinks[0]["strIngredient"+[i]]+"<br/>";
+                    console.log(ingredient);
+                    $("ul.ingredient-list").append(ingredient);
+                }
+                
+                var someInstruction = document.createElement("some-online-instruction");
+                someInstruction.innerHTML = getRandomDrink.drinks[0].strInstructions;
+                $("p.instructions").append(someInstruction);    
+                
+
+            }
+        })
+    })
+
 });
+
