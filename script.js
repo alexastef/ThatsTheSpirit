@@ -14,7 +14,7 @@ $(document).ready(function () {
 
     var liquorChoices = ["Tequila", "Vodka", "Gin", "Rum", "Whiskey"];
     for (var i = 0; i < liquorChoices.length; i++) {
-      var liquorBtn = $("<button class='btn btn-default liquor-btn' type='button' value='" +
+      var liquorBtn = $("<button class='btn btn-default liquor-btn " +liquorChoices[i]+"' type='button' value='" +
           liquorChoices[i] + "'>" + liquorChoices[i] + "</button>");
       $(".stepTwo-container").append(liquorBtn);
     }
@@ -148,7 +148,7 @@ $(document).ready(function () {
 
                 drinkImg = getRandomDrink.drinks[0].strDrinkThumb;
                 console.log(drinkImg);
-                $(".img").attr("src", drinkImg);
+                $(".drinkImg").attr("src", drinkImg);
 
                 glassType = getRandomDrink.drinks[0].strGlass;
                 console.log(glassType);

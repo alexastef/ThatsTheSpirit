@@ -39,10 +39,17 @@ body {
 }
 
 #dropdownMenu1 {
-    width: 50%;
-    margin: 0 auto;
+
+    width: 100%;
+    margin-top: 3in;
+
     justify-content: center;
     align-items: center;
+    padding: 30px;
+    text-decoration: solid;
+    background-color:black;
+    border-radius: 50px;
+    color: white;
     /* position: relative;
     top: 50%;
     left: 50%;
@@ -51,10 +58,11 @@ body {
 
 .dropdown-menu {
     margin-top: 0;
-    width: 50%;
+
+    width: 80%;
     margin: 0 auto;
     text-align: center;
-    color: red;
+    transform: translate3d(100px,374px,0px) !important;
 
 }
 
@@ -84,4 +92,16 @@ body {
 
 ul {
     padding: 0px;
+}
+
+.Tequila:hover,
+.Vodka:hover,
+.Gin:hover,
+.Rum:hover,
+.Whiskey:hover{
+    background-color: yellow;
+}
+
+.stepTwo-container{
+    background-color: black;
 }
