@@ -7,11 +7,18 @@ html {
 }
 
 header {
-    background-color: slategray;
+    /* background-color: slategray; */
     text-align: center;
-    color: white;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    color: orange;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    font-family: cursive;
+    font-size: 50px;
+}
+
+h2 {
+    color: orange;
+    font-size: 50px;
     font-family: cursive;
 }
 
@@ -47,6 +54,7 @@ body {
     width: 50%;
     margin: 0 auto;
     text-align: center;
+    color: red;
 
 }
 
@@ -70,8 +78,9 @@ body {
 
 .ingredient {
     list-style: none;
-    color: white;
+    color: red;
 }
+
 
 ul {
     padding: 0px;
