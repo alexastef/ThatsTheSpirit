@@ -7,11 +7,18 @@ html {
 }
 
 header {
-    background-color: slategray;
+    /* background-color: slategray; */
     text-align: center;
-    color: white;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    color: orange;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    font-family: cursive;
+    font-size: 50px;
+}
+
+h2 {
+    color: orange;
+    font-size: 50px;
     font-family: cursive;
 }
 
@@ -32,8 +39,10 @@ body {
 }
 
 #dropdownMenu1 {
+
     width: 100%;
     margin-top: 3in;
+
     justify-content: center;
     align-items: center;
     padding: 30px;
@@ -49,6 +58,7 @@ body {
 
 .dropdown-menu {
     margin-top: 0;
+
     width: 80%;
     margin: 0 auto;
     text-align: center;
@@ -76,8 +86,9 @@ body {
 
 .ingredient {
     list-style: none;
-    color: white;
+    color: red;
 }
+
 
 ul {
     padding: 0px;
