@@ -95,6 +95,8 @@ $(document).ready(function () {
               $(".row-1").attr("style","display:block");
               $(".spotify-container").attr("style", "display:inline-block");
               $(".drink-container").attr("style", "display:inline-block");
+              $(".your-drink").attr("style","color:orange");
+
   
               drinkImg = getRandomDrink.drinks[0].strDrinkThumb;
               console.log(drinkImg);
@@ -278,51 +280,5 @@ $(document).ready(function () {
     $(".title").attr("style","font-family: 'Courgette', cursive");
     $(".title").attr("style","color:orange");
 
-
-    randomBtn.on("click", function(){
-        $(".dropdown").attr("style","display:none");
-        var url = "https://www.thecocktaildb.com/api/json/v1/1/random.php"
-
-        $.ajax({
-            url: url,
-            method:"GET",
-            success: function(getRandomDrink){
-                console.log(getRandomDrink.drinks[0].strDrink);
-
-                drinkName = getRandomDrink.drinks[0].strDrink;
-                $(".your-drink").append(drinkName);
-                $(".drink-container").attr("style","display:block");
-                $(".your-drink").attr("style","color:orange");
-
-                drinkImg = getRandomDrink.drinks[0].strDrinkThumb;
-                console.log(drinkImg);
-                $(".drinkImg").attr("src", drinkImg);
-
-                glassType = getRandomDrink.drinks[0].strGlass;
-                console.log(glassType);
-                $("p.glass-type").append(glassType);
-    
-                //for the in ingredient list
-                for (var i = 1; i <16; i++){
-                    console.log(i);
-    
-    
-                    if (getRandomDrink.drinks[0]["strIngredient"+[i]] === null){
-                        break;
-                    }
-                    var ingredient = document.createElement("ingredient-from-the-online-list");
-                    ingredient.innerHTML = getRandomDrink.drinks[0]["strMeasure"+[i]] + ": " + getRandomDrink.drinks[0]["strIngredient"+[i]]+"<br/>";
-                    console.log(ingredient);
-                    $("ul.ingredient-list").append(ingredient);
-                }
-                
-                var someInstruction = document.createElement("some-online-instruction");
-                someInstruction.innerHTML = getRandomDrink.drinks[0].strInstructions;
-                $("p.instructions").append(someInstruction);    
-                
-
-            }
-        })
-    })
 });
 
