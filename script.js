@@ -13,13 +13,13 @@ $(document).ready(function () {
     // Hide original dropdown menu
     $(".dropdown").attr("style", "display: none");
     // Create a disabled button as step 2 for user and append to the correct container
-    var chooseIngredient = $("<button class='btn btn-default' type='button' id='refBtn'> Choose your ingredient: </button>");
+    var chooseIngredient = $("<button class='btn btn-default btn-prompt' type='button' id='refBtn'> Choose Your Ingredient: </button>");
     $(".stepTwo-container").append(chooseIngredient);
 
     // Create buttons for liquor choices by looping through array & append them to the container
     var liquorChoices = ["Tequila", "Vodka", "Gin", "Rum", "Whiskey"];
     for (var i = 0; i < liquorChoices.length; i++) {
-      var liquorBtn = $("<button class='btn btn-default liquor-btn " +liquorChoices[i]+"' type='button' value='" +
+      var liquorBtn = $("<button class='btn btn-default rounded-0 liquor-btn " +liquorChoices[i]+"' type='button' value='" +
           liquorChoices[i] + "'>" + liquorChoices[i] + "</button>");
       $(".stepTwo-container").append(liquorBtn);
     }
@@ -28,11 +28,11 @@ $(document).ready(function () {
 
   });
 
-
+  // Adding event listener to category button 
   categoryBtn.on("click", function () {
     // Hide original dropdown menu
     $(".dropdown").attr("style", "display: none");
-    var chooseCategory = $("<button class='btn btn-default' type='button' id='refBtn'> Choose your category: </button>");
+    var chooseCategory = $("<button class='btn btn-default btn-prompt' type='button' id='refBtn'> Choose Your Category: </button>");
     $(".stepTwo-container").append(chooseCategory);
 
     var categoryChoices = ["Glass", "Complexity", "Flavor"];
@@ -42,12 +42,14 @@ $(document).ready(function () {
     }
   });
 
+  // When the #Glass button is clicked, then the glass options are populated and the glass search filter is returned
   $(".stepTwo-container").on("click", "#Glass", function () {
     // Empty .stepTwo-container div, making it ready for new buttons
     $(".stepTwo-container").empty();
     var chooseGlass = $("<button class='btn btn-default' type='button' id='refBtnTwo'> Choose your glass: </button>");
     $(".stepTwo-container").append(chooseGlass);
 
+    // Create array for glass options
     var glassChoices = ["Cocktail glass", "Shot glass", "Pint glass", "Beer mug", "Margarita glass", "Martini Glass"];
     for (var i = 0; i < glassChoices.length; i++) {
       var glassBtn = $("<button class='btn btn-default liquor-btn' type='button' value='" + glassChoices[i] + "'>" + glassChoices[i] + "</button>");
@@ -94,6 +96,7 @@ $(document).ready(function () {
       // Call getRecipe function for the randomly selected drink
       getRecipe(displayCocktail);
       // Call getMusic function to pass through the userChoice as the variable that determines the playlist
+      console.log(userChoice);
       getMusic(userChoice);
 
     });
