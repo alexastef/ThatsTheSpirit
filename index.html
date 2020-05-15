@@ -15,15 +15,15 @@
     <div class="col-sm-12">
         <div class="dropdown">
             <!-- Main Start Dropdown Menu -->
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <button class="btn btn-default dropdown-toggle btn-prompt" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
               How would you like us to make your drink?
               <span class="caret"></span>
             </button>
             <!-- Dropdown Options -->
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <li id="ingredient"><button type="button" class="btn btn-light btn-choice1">With a specific ingredient</button></li>
-              <li id="category"><button type="button" class="btn btn-light btn-choice1">This Category</button></li>
-              <li id="random"><button type="button" class="btn btn-light btn-choice1">Random!</button></li>
+              <li id="ingredient"><button type="button" class="btn btn-light rounded-0">With a specific ingredient</button></li>
+              <li id="category"><button type="button" class="btn btn-light rounded-0">Glass type</button></li>
+              <li id="random"><button type="button" class="btn btn-light rounded-0">Random!</button></li>
             </ul>
         </div>
         <!-- Where dynamically-created second set of questions will go -->
@@ -34,23 +34,11 @@
  <div class="row row-1" style="display:none">
     <div class="col-sm-12">
         <!-- Only one column for subheader-->
-        <h2 class="enjoy withBackground rounded"> Enjoy!</h2>
+        <h3 class="enjoy withBackground rounded"> Enjoy!</h3>
     </div>   
 </div>    
  <!-- Row 2 to house the results -->     
  <div class="row row-2">
-    <div class="col-sm-5">
-        <!-- Column 1 container displays the suggested playlist -->
-        <div class="spotify-container withBackground rounded"  style="display:none">
-            <h3 class="your-playlist">A Playlist You Might Like:</h3>
-            <!-- Cover Image From AJAX Response -->
-            <div class="coverImg"></div>
-            <!-- Playlist description from the AJAX Response -->
-            <h5 class="playlist-description"></h5>
-            <!-- Actual Playlist widget -->
-            <div class="playlist"></div>
-        </div>
-    </div>
     <div class="col-sm-7">
         <!-- Column 2 container displays the suggested drink -->
         <div class="drink-container withBackground rounded" style="display:none">
@@ -72,6 +60,18 @@
             <h5>Instructions</h5>
             <p class="instructions"></p>
 
+        </div>
+    </div>
+    <div class="col-sm-5">
+        <!-- Column 1 container displays the suggested playlist -->
+        <div class="spotify-container withBackground rounded"  style="display:none">
+            <h3 class="your-playlist">A Playlist You Might Like:</h3>
+            <!-- Cover Image From AJAX Response -->
+            <div class="coverImg"></div>
+            <!-- Playlist description from the AJAX Response -->
+            <h5 class="playlist-description"></h5>
+            <!-- Actual Playlist widget -->
+            <div class="playlist"></div>
         </div>
     </div>
  </div>
