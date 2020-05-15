@@ -13,13 +13,13 @@ $(document).ready(function () {
     // Hide original dropdown menu
     $(".dropdown").attr("style", "display: none");
     // Create a disabled button as step 2 for user and append to the correct container
-    var chooseIngredient = $("<button class='btn btn-default' type='button' id='refBtn'> Choose your ingredient: </button>");
+    var chooseIngredient = $("<button class='btn btn-default btn-prompt' type='button' id='refBtn'> Choose Your Ingredient: </button>");
     $(".stepTwo-container").append(chooseIngredient);
 
     // Create buttons for liquor choices by looping through array & append them to the container
     var liquorChoices = ["Tequila", "Vodka", "Gin", "Rum", "Whiskey"];
     for (var i = 0; i < liquorChoices.length; i++) {
-      var liquorBtn = $("<button class='btn btn-default liquor-btn " +liquorChoices[i]+"' type='button' value='" +
+      var liquorBtn = $("<button class='btn btn-default rounded-0 liquor-btn " +liquorChoices[i]+"' type='button' value='" +
           liquorChoices[i] + "'>" + liquorChoices[i] + "</button>");
       $(".stepTwo-container").append(liquorBtn);
     }
@@ -28,42 +28,44 @@ $(document).ready(function () {
 
   });
 
-
+  // Adding event listener to category button 
   categoryBtn.on("click", function () {
     // Hide original dropdown menu
     $(".dropdown").attr("style", "display: none");
-    var chooseCategory = $("<button class='btn btn-default' type='button' id='refBtn'> Choose your glass type: </button>");
+    var chooseCategory = $("<button class='btn btn-default btn-prompt' type='button' id='refBtn'> Choose your glass type: </button>");
     $(".stepTwo-container").append(chooseCategory);
 
+    // Set three categories
     var categoryChoices = ["Novelty Glass", "Stemmed Glass", "Standard Cup"];
     for (var i = 0; i < categoryChoices.length; i++) {
-      var catBtn = $("<button id='" + categoryChoices[i] + "' class='btn btn-default category-btn' type='button' value='" + categoryChoices[i] + "'>" + categoryChoices[i] + "</button>");
+      var catBtn = $("<button id='" + categoryChoices[i] + "' class='btn btn-default rounded-0 category-btn' type='button' value='" + categoryChoices[i] + "'>" + categoryChoices[i] + "</button>");
       $(".stepTwo-container").append(catBtn);
     }
   });
 
+// Create event listener for the category button
   $(".stepTwo-container").on("click", ".category-btn", function () {
     // Empty .stepTwo-container div, making it ready for new buttons
     $(".stepTwo-container").empty();
-    var glassType = $("<button class='btn btn-default' type='button' id='refBtnTwo'>" + this.value + "</button>");
+    var glassType = $("<button class='btn btn-default btn-prompt' type='button' id='refBtnTwo'>" + this.value + "</button>");
     $(".stepTwo-container").append(glassType);
 
     if(this.value === "Novelty Glass") {
       var glassChoices = ["Coffee mug", "Jar", "Punch bowl", "Pitcher", "Copper Mug", "Mason jar"];
       for (var i = 0; i < glassChoices.length; i++) {
-      var glassBtn = $("<button class='btn btn-default liquor-btn' type='button' value='" + glassChoices[i] + "'>" + glassChoices[i] + "</button>");
+      var glassBtn = $("<button class='btn btn-default rounded-0 liquor-btn' type='button' value='" + glassChoices[i] + "'>" + glassChoices[i] + "</button>");
       $(".stepTwo-container").append(glassBtn);
       }
     }else if(this.value === "Stemmed Glass") {
       var glassChoices = ["Cocktail glass", "Pousse cafe glass", "Champagne flute", "Whiskey sour glass", "Brandy snifter", "White wine glass", "Nick and Nora Glass", "Hurricane glass", "Irish coffee cup", "Wine Glass", "Cordial glass", "Margarita/Coupette glass", "Parfait glass", "Martini Glass", "Balloon Glass", "Coupe Glass"];
       for (var i = 0; i < glassChoices.length; i++) {
-      var glassBtn = $("<button class='btn btn-default liquor-btn' type='button' value='" + glassChoices[i] + "'>" + glassChoices[i] + "</button>");
+      var glassBtn = $("<button class='btn btn-default rounded-0 liquor-btn' type='button' value='" + glassChoices[i] + "'>" + glassChoices[i] + "</button>");
       $(".stepTwo-container").append(glassBtn);
     }
     }else if(this.value === "Standard Cup") {
       var glassChoices = ["Highball glass", "Old-fashioned glass", "Collins glass", "Pint glass", "Beer mug", "Beer pilsner", "Beer Glass", "Shot Glass"];
       for (var i = 0; i < glassChoices.length; i++) {
-      var glassBtn = $("<button class='btn btn-default liquor-btn' type='button' value='" + glassChoices[i] + "'>" + glassChoices[i] + "</button>");
+      var glassBtn = $("<button class='btn btn-default rounded-0 liquor-btn' type='button' value='" + glassChoices[i] + "'>" + glassChoices[i] + "</button>");
       $(".stepTwo-container").append(glassBtn);
       }
     } 
@@ -71,10 +73,59 @@ $(document).ready(function () {
     return filter;
   });
 
-  $(".stepTwo-container").on("click", ".liquor-btn", function blah() {
+  $(".stepTwo-container").on("click", ".liquor-btn", function() {
     var userChoice = $(this).val();
     var queryUrl = baseUrl + filter + userChoice;
 
+    getDrink(userChoice, queryUrl);
+  });
+
+    // When random button is clicked, the second step is skipped and the drink & recipe are pulled using a different function and API call
+    randomBtn.on("click", function(){
+      $(".dropdown").attr("style","display:none");
+      var url = "https://www.thecocktaildb.com/api/json/v1/1/random.php"
+  
+      $.ajax({
+          url: url,
+          method:"GET",
+          success: function(getRandomDrink){
+  
+              drinkName = getRandomDrink.drinks[0].strDrink;
+              $(".your-drink").append(drinkName);
+              $(".row-1").attr("style","display:block");
+              $(".spotify-container").attr("style", "display:inline-block");
+              $(".drink-container").attr("style", "display:inline-block");
+  
+              drinkImg = getRandomDrink.drinks[0].strDrinkThumb;
+              console.log(drinkImg);
+              $(".drinkImg").attr("src", drinkImg);
+  
+              glassType = getRandomDrink.drinks[0].strGlass;
+              $("p.glass-type").append(glassType);
+  
+              //for the in ingredient list
+              for (var i = 1; i <16; i++){
+  
+                  if (getRandomDrink.drinks[0]["strIngredient"+[i]] === null){
+                      break;
+                  }
+                  var ingredient = document.createElement("ingredient-from-the-online-list");
+                  ingredient.innerHTML = getRandomDrink.drinks[0]["strMeasure"+[i]] + ": " + getRandomDrink.drinks[0]["strIngredient"+[i]]+"<br/>";
+                  $("ul.ingredient-list").append(ingredient);
+              }
+              
+              var someInstruction = document.createElement("some-online-instruction");
+              someInstruction.innerHTML = getRandomDrink.drinks[0].strInstructions;
+              $("p.instructions").append(someInstruction);  
+              
+              getMusic(glassType);
+              
+  
+          }
+      })
+  })
+
+  function getDrink(userChoice, queryUrl){
     $.ajax({
       url: queryUrl,
       method: "GET",
@@ -110,9 +161,8 @@ $(document).ready(function () {
       getRecipe(displayCocktail);
       // Call getMusic function to pass through the userChoice as the variable that determines the playlist
       getMusic(userChoice);
-
-    });
   });
+}
 
   // Create function to get the recipe with a separate AJAX call to the Cocktail DB
   function getRecipe(x) {
@@ -175,22 +225,23 @@ $(document).ready(function () {
     });
   }
 
-
+// Function to add music, passing through the userchoice or the glasstype (when random)
   function getMusic(c) {
       //if main ingredient is tequila, show latin playlist
-      if (c == "Tequila") {
+      if (c == "Tequila" || c == "Punch bowl" || c == "Margarita/Coupette glass") {
           var playlistId = "1388276297"
       // if main ingredient is vodka, show quarantini playlist
-      } else if (c == "Vodka") {
+      } else if (c == "Vodka" || c == "Jar" || c == "Pitcher" || c == "Highball glass" || c == "Shot Glass" || c == "Cocktail Glass" || c == "White wine glass" || c == "Martini Glass") {
           var playlistId = "1908130662"
       // if main ingredient is gin, play mellow playlist
-      } else if (c == "Gin") {
+      } else if (c == "Gin" || c == "Copper Mug" || c == "Collins glass" || c == "Beer pilsner" || c == "Pousse cafe glass" || c == "Champagne flute" || c == "Brandy snifter"
+        || c == "Nick and Nora Glass" || c == "Cordial Glass" || c == "Coup Glass" ) {
           var playlistId = "3105343146"
       // if main ingredient is rum, play island playlist
-      } else if (c == "Rum") {
+      } else if (c == "Rum" || c == "Mason jar" || c == "Hurricane glass" || c == "Pint glass" || c == "Parfait glass" || c == "Balloon Glass") {
           var playlistId = "2904767962"
-      // if main ingredient is whiskey, play Americana playlist
-      } else if (c == "Whiskey") {
+      // otherwise, if the main ingredient is whiskey or it's another type of glass, play the Americana playlist
+      } else {
           var playlistId = "3105159006";
       }
 
@@ -216,6 +267,7 @@ $(document).ready(function () {
         getTracks(playlistId);
     });
 
+    // Function to add the playlist's songs
     function getTracks(playlistId) {
         $(".playlist").append(
             "<iframe scrolling='no' frameborder='0' allowTransparency='true' src='https://www.deezer.com/plugins/player?format=classic&autoplay=false&playlist=true&width=700&height=350&color=ff0000&layout=dark&size=medium&type=playlist&id=" + playlistId + "&app_id=1' width='100%' height='350'></iframe>");
@@ -225,6 +277,7 @@ $(document).ready(function () {
   }
     $(".title").attr("style","font-family: 'Courgette', cursive");
     $(".title").attr("style","color:orange");
+
 
     randomBtn.on("click", function(){
         $(".dropdown").attr("style","display:none");
