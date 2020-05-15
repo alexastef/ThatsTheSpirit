@@ -82,6 +82,7 @@ $(document).ready(function () {
       $(".stepTwo-container").attr("style", "display: none");
       // Add the drink title to the drink container
       $(".your-drink").append(randomSelection.strDrink);
+      $(".your-drink").attr("style", "color:orange");
 
       // Get the drink image and add classes so that we can style and size it and so it's fluid
       var img = $("<img src='" + randomSelection.strDrinkThumb + "' class='drinkImg img-fluid clearfix' />");
@@ -208,6 +209,8 @@ $(document).ready(function () {
     }
 
   }
+    $(".title").attr("style","font-family: 'Courgette', cursive");
+    $(".title").attr("style","color:orange");
 
     randomBtn.on("click", function(){
         $(".dropdown").attr("style","display:none");
@@ -221,7 +224,8 @@ $(document).ready(function () {
 
                 drinkName = getRandomDrink.drinks[0].strDrink;
                 $(".your-drink").append(drinkName);
-                $(".row-2").attr("style","display:block");
+                $(".drink-container").attr("style","display:block");
+                $(".your-drink").attr("style","color:orange");
 
                 drinkImg = getRandomDrink.drinks[0].strDrinkThumb;
                 console.log(drinkImg);

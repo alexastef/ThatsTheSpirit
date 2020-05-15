@@ -41,7 +41,7 @@ body {
 #dropdownMenu1 {
 
     width: 100%;
-    margin-top: 3in;
+    margin-top: 100px;
     justify-content: center;
     align-items: center;
     padding: 30px;
@@ -49,6 +49,8 @@ body {
     background-color:black;
     border-radius: 50px;
     color: white;
+    font-family: 'Courgette', cursive;
+    font-size: larger;
     /* position: relative;
     top: 50%;
     left: 50%;
@@ -58,11 +60,11 @@ body {
 
 .dropdown-menu {
     margin-top: 0;
-
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     text-align: center;
-    transform: translate3d(100px,374px,0px) !important;
+    /* transform: translate3d(100px,274px,0px) !important; */
+    background-color:#6c757d;
 
 }
 
@@ -105,14 +107,19 @@ ul {
 .your-drink,
 .your-playlist {
     padding: 10px;
+    color: orange;
+    font-family: 'Courgette', cursive;
 }
 
 .enjoy {
     margin-top: 15px;
+    color: orange;
+    font-family: 'Courgette', cursive;
+}
 
 .ingredient {
     list-style: none;
-    color: red;
+    color:white;
 }
 
 
@@ -132,3 +139,5 @@ ul {
     background-color: #252525;
 
 }
+
+
