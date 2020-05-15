@@ -32,32 +32,46 @@ $(document).ready(function () {
   categoryBtn.on("click", function () {
     // Hide original dropdown menu
     $(".dropdown").attr("style", "display: none");
-    var chooseCategory = $("<button class='btn btn-default' type='button' id='refBtn'> Choose your category: </button>");
+    var chooseCategory = $("<button class='btn btn-default' type='button' id='refBtn'> Choose your glass type: </button>");
     $(".stepTwo-container").append(chooseCategory);
 
-    var categoryChoices = ["Glass", "Complexity", "Flavor"];
+    var categoryChoices = ["Novelty Glass", "Stemmed Glass", "Standard Cup"];
     for (var i = 0; i < categoryChoices.length; i++) {
       var catBtn = $("<button id='" + categoryChoices[i] + "' class='btn btn-default category-btn' type='button' value='" + categoryChoices[i] + "'>" + categoryChoices[i] + "</button>");
       $(".stepTwo-container").append(catBtn);
     }
   });
 
-  $(".stepTwo-container").on("click", "#Glass", function () {
+  $(".stepTwo-container").on("click", ".category-btn", function () {
     // Empty .stepTwo-container div, making it ready for new buttons
     $(".stepTwo-container").empty();
-    var chooseGlass = $("<button class='btn btn-default' type='button' id='refBtnTwo'> Choose your glass: </button>");
-    $(".stepTwo-container").append(chooseGlass);
+    var glassType = $("<button class='btn btn-default' type='button' id='refBtnTwo'>" + this.value + "</button>");
+    $(".stepTwo-container").append(glassType);
 
-    var glassChoices = ["Cocktail glass", "Shot glass", "Pint glass", "Beer mug", "Margarita glass", "Martini Glass"];
-    for (var i = 0; i < glassChoices.length; i++) {
+    if(this.value === "Novelty Glass") {
+      var glassChoices = ["Coffee mug", "Jar", "Punch bowl", "Pitcher", "Copper Mug", "Mason jar"];
+      for (var i = 0; i < glassChoices.length; i++) {
+      var glassBtn = $("<button class='btn btn-default liquor-btn' type='button' value='" + glassChoices[i] + "'>" + glassChoices[i] + "</button>");
+      $(".stepTwo-container").append(glassBtn);
+      }
+    }else if(this.value === "Stemmed Glass") {
+      var glassChoices = ["Cocktail glass", "Pousse cafe glass", "Champagne flute", "Whiskey sour glass", "Brandy snifter", "White wine glass", "Nick and Nora Glass", "Hurricane glass", "Irish coffee cup", "Wine Glass", "Cordial glass", "Margarita/Coupette glass", "Parfait glass", "Martini Glass", "Balloon Glass", "Coupe Glass"];
+      for (var i = 0; i < glassChoices.length; i++) {
       var glassBtn = $("<button class='btn btn-default liquor-btn' type='button' value='" + glassChoices[i] + "'>" + glassChoices[i] + "</button>");
       $(".stepTwo-container").append(glassBtn);
     }
+    }else if(this.value === "Standard Cup") {
+      var glassChoices = ["Highball glass", "Old-fashioned glass", "Collins glass", "Pint glass", "Beer mug", "Beer pilsner", "Beer Glass", "Shot Glass"];
+      for (var i = 0; i < glassChoices.length; i++) {
+      var glassBtn = $("<button class='btn btn-default liquor-btn' type='button' value='" + glassChoices[i] + "'>" + glassChoices[i] + "</button>");
+      $(".stepTwo-container").append(glassBtn);
+      }
+    } 
     filter = "filter.php?g=";
     return filter;
   });
 
-  $(".stepTwo-container").on("click", ".liquor-btn", function () {
+  $(".stepTwo-container").on("click", ".liquor-btn", function blah() {
     var userChoice = $(this).val();
     var queryUrl = baseUrl + filter + userChoice;
 
