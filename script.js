@@ -147,6 +147,7 @@ $(document).ready(function () {
       $(".stepTwo-container").attr("style", "display: none");
       // Add the drink title to the drink container
       $(".your-drink").append(randomSelection.strDrink);
+      $(".your-drink").attr("style", "color:orange");
 
       // Get the drink image and add classes so that we can style and size it and so it's fluid
       var img = $("<img src='" + randomSelection.strDrinkThumb + "' class='drinkImg img-fluid clearfix' />");
@@ -274,6 +275,54 @@ $(document).ready(function () {
     }
 
   }
+    $(".title").attr("style","font-family: 'Courgette', cursive");
+    $(".title").attr("style","color:orange");
 
+
+    randomBtn.on("click", function(){
+        $(".dropdown").attr("style","display:none");
+        var url = "https://www.thecocktaildb.com/api/json/v1/1/random.php"
+
+        $.ajax({
+            url: url,
+            method:"GET",
+            success: function(getRandomDrink){
+                console.log(getRandomDrink.drinks[0].strDrink);
+
+                drinkName = getRandomDrink.drinks[0].strDrink;
+                $(".your-drink").append(drinkName);
+                $(".drink-container").attr("style","display:block");
+                $(".your-drink").attr("style","color:orange");
+
+                drinkImg = getRandomDrink.drinks[0].strDrinkThumb;
+                console.log(drinkImg);
+                $(".drinkImg").attr("src", drinkImg);
+
+                glassType = getRandomDrink.drinks[0].strGlass;
+                console.log(glassType);
+                $("p.glass-type").append(glassType);
+    
+                //for the in ingredient list
+                for (var i = 1; i <16; i++){
+                    console.log(i);
+    
+    
+                    if (getRandomDrink.drinks[0]["strIngredient"+[i]] === null){
+                        break;
+                    }
+                    var ingredient = document.createElement("ingredient-from-the-online-list");
+                    ingredient.innerHTML = getRandomDrink.drinks[0]["strMeasure"+[i]] + ": " + getRandomDrink.drinks[0]["strIngredient"+[i]]+"<br/>";
+                    console.log(ingredient);
+                    $("ul.ingredient-list").append(ingredient);
+                }
+                
+                var someInstruction = document.createElement("some-online-instruction");
+                someInstruction.innerHTML = getRandomDrink.drinks[0].strInstructions;
+                $("p.instructions").append(someInstruction);    
+                
+
+            }
+        })
+    })
 });
 

@@ -46,6 +46,9 @@ body {
     background-color:#252525;
     border-radius: 50px;
     color: #f5f5f5;
+    font-family: 'Courgette', cursive;
+    font-size: larger;
+
 
 }
 
@@ -55,10 +58,8 @@ body {
     width: 100%;
     margin: 0 auto;
     text-align: center;
-    padding-right: 0px;
-    padding-left: 0px;
-    white-space: normal;
-    /* transform: translate3d(100px,374px,0px) !important; */
+    background-color:#6c757d;
+
 
 }
 
@@ -105,11 +106,15 @@ ul {
 .your-drink,
 .your-playlist {
     padding: 10px;
+    color: orange;
+    font-family: 'Courgette', cursive;
 }
 
 .enjoy {
     margin-top: 15px;
     border-radius: 50px;
+    color: orange;
+    font-family: 'Courgette', cursive;
 
 }
 
