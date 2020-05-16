@@ -19,7 +19,7 @@ $(document).ready(function () {
     // Create buttons for liquor choices by looping through array & append them to the container
     var liquorChoices = ["Tequila", "Vodka", "Gin", "Rum", "Whiskey"];
     for (var i = 0; i < liquorChoices.length; i++) {
-      var liquorBtn = $("<button class='btn btn-default rounded-0 liquor-btn " +liquorChoices[i]+"' type='button' value='" +
+      var liquorBtn = $("<button class='btn btn-secondary rounded-0 liquor-btn " +liquorChoices[i]+"' type='button' value='" +
           liquorChoices[i] + "'>" + liquorChoices[i] + "</button>");
       $(".stepTwo-container").append(liquorBtn);
     }
@@ -38,7 +38,7 @@ $(document).ready(function () {
     // Set three categories
     var categoryChoices = ["Novelty Glass", "Stemmed Glass", "Standard Cup"];
     for (var i = 0; i < categoryChoices.length; i++) {
-      var catBtn = $("<button id='" + categoryChoices[i] + "' class='btn btn-default rounded-0 category-btn' type='button' value='" + categoryChoices[i] + "'>" + categoryChoices[i] + "</button>");
+      var catBtn = $("<button id='" + categoryChoices[i] + "' class='btn btn-secondary rounded-0 category-btn' type='button' value='" + categoryChoices[i] + "'>" + categoryChoices[i] + "</button>");
       $(".stepTwo-container").append(catBtn);
     }
   });
@@ -53,19 +53,19 @@ $(document).ready(function () {
     if(this.value === "Novelty Glass") {
       var glassChoices = ["Coffee mug", "Jar", "Punch bowl", "Pitcher", "Copper Mug", "Mason jar"];
       for (var i = 0; i < glassChoices.length; i++) {
-      var glassBtn = $("<button class='btn btn-default rounded-0 liquor-btn' type='button' value='" + glassChoices[i] + "'>" + glassChoices[i] + "</button>");
+      var glassBtn = $("<button class='btn btn-secondary rounded-0 liquor-btn' type='button' value='" + glassChoices[i] + "'>" + glassChoices[i] + "</button>");
       $(".stepTwo-container").append(glassBtn);
       }
     }else if(this.value === "Stemmed Glass") {
       var glassChoices = ["Cocktail glass", "Pousse cafe glass", "Champagne flute", "Whiskey sour glass", "Brandy snifter", "White wine glass", "Nick and Nora Glass", "Hurricane glass", "Irish coffee cup", "Wine Glass", "Cordial glass", "Margarita/Coupette glass", "Parfait glass", "Martini Glass", "Balloon Glass", "Coupe Glass"];
       for (var i = 0; i < glassChoices.length; i++) {
-      var glassBtn = $("<button class='btn btn-default rounded-0 liquor-btn' type='button' value='" + glassChoices[i] + "'>" + glassChoices[i] + "</button>");
+      var glassBtn = $("<button class='btn btn-secondary rounded-0 liquor-btn' type='button' value='" + glassChoices[i] + "'>" + glassChoices[i] + "</button>");
       $(".stepTwo-container").append(glassBtn);
     }
     }else if(this.value === "Standard Cup") {
       var glassChoices = ["Highball glass", "Old-fashioned glass", "Collins glass", "Pint glass", "Beer mug", "Beer pilsner", "Beer Glass", "Shot Glass"];
       for (var i = 0; i < glassChoices.length; i++) {
-      var glassBtn = $("<button class='btn btn-default rounded-0 liquor-btn' type='button' value='" + glassChoices[i] + "'>" + glassChoices[i] + "</button>");
+      var glassBtn = $("<button class='btn btn-secondary rounded-0 liquor-btn' type='button' value='" + glassChoices[i] + "'>" + glassChoices[i] + "</button>");
       $(".stepTwo-container").append(glassBtn);
       }
     } 
